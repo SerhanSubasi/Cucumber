@@ -1,3 +1,4 @@
+@US001
 Feature: US001 Amazon Home Page Test
 
   Scenario: TC01 Arama kutusunda iphone aratilir
