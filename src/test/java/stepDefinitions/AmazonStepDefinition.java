@@ -23,10 +23,18 @@ public class AmazonStepDefinition {
     @When("sayfayi kapatir")
     public void sayfayi_kapatir() {
         Driver.closeDriver();
-    }
 
+    }
 
     @When("arama kutusunda samsung aratir")
     public void aramaKutusundaSamsungAratir() {
+        amazonPage.searchBox.sendKeys("samsung");
+        amazonPage.searchBox.submit();
+    }
+
+    @When("arama kutusunda nokia aratir")
+    public void aramaKutusundaNokiaAratir() {
+        amazonPage.searchBox.sendKeys("nokia");
+        amazonPage.searchBox.submit();
     }
 }
