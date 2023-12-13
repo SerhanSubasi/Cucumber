@@ -1,7 +1,9 @@
 package stepDefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.Keys;
 import pages.AmazonPage;
 import utilities.ConfigReader;
 import utilities.Driver;
@@ -37,4 +39,15 @@ public class AmazonStepDefinition {
         amazonPage.searchBox.sendKeys("nokia");
         amazonPage.searchBox.submit();
     }
+
+    @Given("kullanici {string} sayfasina gider")
+    public void kullaniciSayfasinaGider(String url) {
+        Driver.getDriver().get(url);
+    }
+
+    @And("arama kutusunda {string} aratir")
+    public void aramaKutusundaAratir(String str) {
+        amazonPage.searchBox.sendKeys(str + Keys.ENTER);
+    }
+
 }
