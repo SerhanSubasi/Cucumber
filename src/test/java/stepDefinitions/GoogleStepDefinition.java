@@ -35,9 +35,7 @@ public class GoogleStepDefinition {
         List<String> dataTableList = data.asList();
         for (int i = 0; i <dataTableList.size() ; i++) {
             googlePage.searchBox.sendKeys(dataTableList.get(i) + Keys.ENTER);
-
             Assert.assertTrue(Driver.getDriver().getTitle().contains(dataTableList.get(i)));
-
             googlePage.searchBox.clear();
         }
 
