@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,6 +9,8 @@ import org.openqa.selenium.Keys;
 import pages.GooglePage;
 import utilities.Driver;
 import utilities.ReusableMethods;
+
+import java.util.List;
 
 public class GoogleStepDefinition {
     GooglePage googlePage = new GooglePage();
@@ -27,4 +30,17 @@ public class GoogleStepDefinition {
         googlePage.searchBox.sendKeys(str + Keys.ENTER);
     }
 
+    @When("kullanici verilen bilgiler ile arama yapar")
+    public void kullaniciVerilenBilgilerIleAramaYapar(DataTable data) {
+        List<String> dataTableList = data.asList();
+        for (int i = 0; i <dataTableList.size() ; i++) {
+            googlePage.searchBox.sendKeys(dataTableList.get(i) + Keys.ENTER);
+
+            Assert.assertTrue(Driver.getDriver().getTitle().contains(dataTableList.get(i)));
+
+            googlePage.searchBox.clear();
+        }
+
+
+    }
 }
