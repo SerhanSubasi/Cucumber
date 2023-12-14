@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,6 +10,9 @@ import org.openqa.selenium.Keys;
 import pages.BlueRentalPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
+
+import java.util.List;
 
 
 public class BlueRantalStepDefiniton {
@@ -50,4 +54,23 @@ public class BlueRantalStepDefiniton {
     //  //3. Doğrulama şekli
     //  Assert.assertNotEquals("login",blueRentalPage.loginVerify.getText());
     }
+
+    @And("verilen email ve password ile login olur")
+    public void verilenEmailVePasswordIleLoginOlur(DataTable dataTable) {
+        List<List<String>> emailPassword = dataTable.asLists();
+        for (int i = 1; i <emailPassword.size() ; i++) {
+            String email = emailPassword.get(i).get(0);
+            String password = emailPassword.get(i).get(1);
+
+            blueRentalPage.email.sendKeys(email);
+            blueRentalPage.password.sendKeys(password + Keys.ENTER);
+
+            ReusableMethods.bekle(2);
+
+            Driver.getDriver().navigate().back();
+
+        }
+
+    }
+
 }
