@@ -41,4 +41,13 @@ public class GoogleStepDefinition {
 
 
     }
+
+    @When("kullanici verilen bilgiler ile arama yapar ikinci yol")
+    public void kullaniciVerilenBilgilerIleAramaYaparIkinciYol(List<String> list) {
+        for (String w : list ) {
+            googlePage.searchBox.sendKeys(w + Keys.ENTER);
+            Assert.assertTrue(Driver.getDriver().getTitle().contains(w));
+            googlePage.searchBox.clear();
+        }
+    }
 }
