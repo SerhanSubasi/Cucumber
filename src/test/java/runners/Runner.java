@@ -13,8 +13,8 @@ import org.junit.runner.RunWith;
                 "json:target/json-reports/cucumber.json",
                 "junit:target/xml-report/cucumber.xml"},
         features = "src/test/resources/features",
-        glue = "stepDefinitions",
-        tags = "@US010",
+        glue = {"stepDefinitions","hooks"},
+        tags = "@US003",
         dryRun = false,
         monochrome = false //==> true olunca siyah yazı yazar konsolda.
 )
