@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
                 "junit:target/xml-report/cucumber.xml"},
         features = "src/test/resources/features",
         glue = {"stepDefinitions","hooks"},
-        tags = "@US011",
+        tags = "@US012",
         dryRun = false,
         monochrome = false //==> true olunca siyah yazı yazar konsolda.
 )
