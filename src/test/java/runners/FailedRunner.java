@@ -13,25 +13,18 @@ import org.junit.runner.RunWith;
                 "json:target/json-reports/cucumber.json",
                 "junit:target/xml-report/cucumber.xml",
                 "rerun:TestOutput/failed_scenario.txt" },
-        features = "src/test/resources/features",
+        features = "@TestOutput/failed_scenario.txt",
         glue = {"stepDefinitions","hooks"},
-        tags = "@US013",
         dryRun = false,
         monochrome = false //==> true olunca siyah yazı yazar konsolda.
 )
-public class Runner {
+public class FailedRunner {
 }
 
 /*
-Runner classın bodysi içinde bir şey yazılmaz.
-Runner classında önemli olan iki notasyon vardır;
- 1) @RunWith ==> Runner classımıza çalışma özelliği getirdi
- 2)@CucumberOptions ==> parantezi içinde hangi testleri çalıştıracağımızı,
-  hangi raporları alacağımızı, feature ve glue parametreleri ile bu dosyaların pathlerini
-  gibi test ayrıntılarını tanımlarız ve bazı pluginler ekleyebiliriz.
-
-   dryRun = true ise feature filedaki test senaryolarını çalıştırmadan
-   eksik step definition olup olmadığını kontrol eder, browserı çalıştırmaz.
+Bu classta sadece fail olan test scenariolarını çalıştıracağız.
+Sadece txt dosyasındaki fail olan senaryolar çalıştırılacağı için tag parametresine gerek yoktur.
+features yolu da bir dosya olmadığı için başına @ ekledik.
 
 rerun plugini ile fail olan senaryoları belirtmiş olduğumuz (failed_scenario.txt) dosyası içinde tutabiliriz.
  */
