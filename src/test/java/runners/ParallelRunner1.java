@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
                 "rerun:TestOutput/failed_scenario.txt" },
         features = "src/test/resources/features",
         glue = {"stepDefinitions","hooks"},
-        tags = "@US002",
+        tags = "@US001",
         dryRun = false,
         monochrome = false //==> true olunca siyah yazı yazar konsolda.
 )
