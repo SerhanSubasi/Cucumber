@@ -1,6 +1,11 @@
 package stepDefinitions;
 
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.junit.Test;
+import pages.RobotPage;
+import utilities.ReusableMethods;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -26,5 +31,17 @@ public class RobotStepDefinition {
 
     }
 
+    RobotPage robotPage = new RobotPage();
+
+    @When("yuklenmek istenen dosyayi yukler")
+    public void yuklenmek_istenen_dosyayi_yukler() {
+    robotPage.selectButton.click();
+        ReusableMethods.uploadFilePath("C:\\Users\\Anduril\\Downloads\\kurs_baslangc_bitis_program_gorsel.pdf");
+    }
+
+    @Then("dosyanin basariyla yuklendigini test eder")
+    public void dosyanin_basariyla_yuklendigini_test_eder() {
+        Assert.assertTrue(robotPage.verify.isDisplayed());
+    }
 
 }
